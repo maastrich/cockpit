@@ -1,0 +1,21 @@
+{
+  "name": "@example/web",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "bun test",
+    "lint": "oxlint src",
+    "type-check": "tsc --noEmit",
+    "preview": "npx serve public"
+  },
+  "dependencies": {
+    "@example/core": "workspace:*",
+    "@example/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

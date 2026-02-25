@@ -1,5 +1,9 @@
 packages:
   - .
+  - example/monorepo
+  - example/monorepo/packages/*
+  - example/monorepo/apps/*
+  - example/single-project
 
 onlyBuiltDependencies:
   - esbuild

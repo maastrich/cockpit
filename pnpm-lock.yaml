@@ -11,6 +11,24 @@ importers:
       '@oclif/core':
         specifier: ^4.8.0
         version: 4.8.0
+      chokidar:
+        specifier: ^5.0.0
+        version: 5.0.0
+      fast-glob:
+        specifier: ^3.3.2
+        version: 3.3.3
+      jiti:
+        specifier: ^2.6.1
+        version: 2.6.1
+      p-limit:
+        specifier: ^6.2.0
+        version: 6.2.0
+      picocolors:
+        specifier: ^1.1.1
+        version: 1.1.1
+      zod:
+        specifier: ^3.24.4
+        version: 3.25.76
     devDependencies:
       '@changesets/cli':
         specifier: ^2.29.7
@@ -45,6 +63,81 @@ importers:
       type-testing:
         specifier: ^0.2.0
         version: 0.2.0
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  example/monorepo:
+    devDependencies:
+      '@maastrich/cockpit':
+        specifier: file:../..
+        version: 'file:'
+      '@types/bun':
+        specifier: ^1.0.0
+        version: 1.3.3
+      oxlint:
+        specifier: ^0.16.0
+        version: 0.16.12
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  example/monorepo/apps/cli:
+    dependencies:
+      '@example/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@example/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+    devDependencies:
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.19.7
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  example/monorepo/apps/web:
+    dependencies:
+      '@example/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@example/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+    devDependencies:
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  example/monorepo/packages/core:
+    devDependencies:
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  example/monorepo/packages/utils:
+    dependencies:
+      '@example/core':
+        specifier: workspace:*
+        version: link:../core
+    devDependencies:
+      typescript:
+        specifier: ^5.7.0
+        version: 5.9.3
+
+  example/single-project:
+    devDependencies:
+      '@maastrich/cockpit':
+        specifier: file:../..
+        version: 'file:'
+      '@types/bun':
+        specifier: ^1.3.0
+        version: 1.3.3
+      oxlint:
+        specifier: ^1.23.0
+        version: 1.30.0
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -460,6 +553,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
+  '@maastrich/cockpit@file:':
+    resolution: {directory: '', type: directory}
+    engines: {node: '>=18', pnpm: '>=10'}
+    hasBin: true
+
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
 
@@ -580,9 +678,19 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@oxlint/darwin-arm64@0.16.12':
+    resolution: {integrity: sha512-G7phYhlIA4ke2nW7tHLl+E5+rvdzgGA6830D+e+y1RGllT0w2ONGdKcVTj+2pXGCw6yPmCC5fDsDEn2+RPTfxg==}
+    cpu: [arm64]
+    os: [darwin]
+
   '@oxlint/darwin-arm64@1.30.0':
     resolution: {integrity: sha512-vIiTk1FBObXHvaG3WK/SpwCZP06fuHhSrn8mK2hEs2uSFWG63WgvLAHSGhI4U1X29JGf36zhfUzuKirDIVdKBQ==}
     cpu: [arm64]
+    os: [darwin]
+
+  '@oxlint/darwin-x64@0.16.12':
+    resolution: {integrity: sha512-P/LSOgJ6SzQ3OKEIf3HsebgokZiZ5nDuTgIL4LpNCHlkOLDu/fT8XL9pSkR5y+60v0SOxUF/+aN0Q8EmxblrCw==}
+    cpu: [x64]
     os: [darwin]
 
   '@oxlint/darwin-x64@1.30.0':
@@ -590,8 +698,18 @@ packages:
     cpu: [x64]
     os: [darwin]
 
+  '@oxlint/linux-arm64-gnu@0.16.12':
+    resolution: {integrity: sha512-0N/ZsW+cL7ZAUvOHbzMp3iApt5b/Q81q2e9RgEzkI6gUDCJK8/blWg0se/i6y9e24WH0ZC4bcxY1+Qz4ZQ+mFw==}
+    cpu: [arm64]
+    os: [linux]
+
   '@oxlint/linux-arm64-gnu@1.30.0':
     resolution: {integrity: sha512-1e9NvTvjzG6t1tnUzNU9HZTVwNwhZw2BDQxwIsXV743g54BIkvyZNNXOEGic/Jw4IuIXHzpX3ztVWZaSzvDopg==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@oxlint/linux-arm64-musl@0.16.12':
+    resolution: {integrity: sha512-MoG1SIw4RGowsOsPjm5HjRWymisRZWBea7ewMoXA5xIVQ3eqECifG0KJW0OZp96Ad8DFBEavdlNuImB2uXsMwg==}
     cpu: [arm64]
     os: [linux]
 
@@ -600,8 +718,18 @@ packages:
     cpu: [arm64]
     os: [linux]
 
+  '@oxlint/linux-x64-gnu@0.16.12':
+    resolution: {integrity: sha512-STho8QdMLfn/0lqRU94tGPaYX8lGJccPbqeUcEr3eK5gZ5ZBdXmiHlvkcngXFEXksYC8/5VoJN7Vf3HsmkEskw==}
+    cpu: [x64]
+    os: [linux]
+
   '@oxlint/linux-x64-gnu@1.30.0':
     resolution: {integrity: sha512-yOWGu4a82yA8xLusaznW41IF5ZkvBNz/U++M2/tCYAQUoJKSfJuAS5AhApRMKZLKeX0Vmdagh0YwvC+e98QG0w==}
+    cpu: [x64]
+    os: [linux]
+
+  '@oxlint/linux-x64-musl@0.16.12':
+    resolution: {integrity: sha512-i7pzSoj9nCg/ZzOe8dCZeFWyRRWDylR9tIX04xRTq3G6PBLm6i9VrOdEkxbgM9+pCkRzUc0a9D7rbtCF34TQUA==}
     cpu: [x64]
     os: [linux]
 
@@ -610,9 +738,19 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  '@oxlint/win32-arm64@0.16.12':
+    resolution: {integrity: sha512-wcxq3IBJ7ZlONlXJxQM+7EMx+LX1nkz3ZS3R0EtDM76EOZaqe8BMkW5cXVhF8jarZTZC18oKAckW4Ng9d8adBg==}
+    cpu: [arm64]
+    os: [win32]
+
   '@oxlint/win32-arm64@1.30.0':
     resolution: {integrity: sha512-QK6C1djHKI7g1l5g6W9vkz9sd+sn1QJe6PbaV2sWFjVVoT0tO6LWygVWaci09ZHYVJ+lnCbbaFEgZ9jQhIs05A==}
     cpu: [arm64]
+    os: [win32]
+
+  '@oxlint/win32-x64@0.16.12':
+    resolution: {integrity: sha512-Ae1fx7wmAcMVqzS8rLINaFRpAdh29QzHh133bEYMHzfWBYyK/hLu9g4GLwC/lEIVQu9884b8qutGfdOk6Qia3w==}
+    cpu: [x64]
     os: [win32]
 
   '@oxlint/win32-x64@1.30.0':
@@ -757,6 +895,9 @@ packages:
   '@types/node@20.19.25':
     resolution: {integrity: sha512-ZsJzA5thDQMSQO788d7IocwwQbI8B5OPzmqNvpf3NY/+MHDAS759Wo0gd2WQeXYt5AAAQjzcrTVC6SKCuYgoCQ==}
 
+  '@types/node@22.19.7':
+    resolution: {integrity: sha512-MciR4AKGHWl7xwxkBa6xUGxQJ4VBOmPTF7sL+iGzuahOFaO0jHCsuEfS80pan1ef4gWId1oWOweIhrDEYLuaOw==}
+
   acorn-walk@8.3.4:
     resolution: {integrity: sha512-ueEepnujpqee2o5aIYnvHU6C0A42MNdsIDeqy5BydrkuC5R1ZuUFnm27EeFJGoEHJQgn3uleRvmTXaJgfXbt4g==}
     engines: {node: '>=0.4.0'}
@@ -838,6 +979,10 @@ packages:
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
+
+  chokidar@5.0.0:
+    resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
+    engines: {node: '>= 20.19.0'}
 
   ci-info@3.9.0:
     resolution: {integrity: sha512-NIxF55hv4nSqQswkAeiOi1r83xy8JldOFDTWiug55KBu9Jnblncd2U6ViHmYgHf01TPZS77NJBhBMKdWj9HQMQ==}
@@ -1154,6 +1299,11 @@ packages:
   oxc-resolver@11.14.0:
     resolution: {integrity: sha512-i4wNrqhOd+4YdHJfHglHtFiqqSxXuzFA+RUqmmWN1aMD3r1HqUSrIhw17tSO4jwKfhLs9uw1wzFPmvMsWacStg==}
 
+  oxlint@0.16.12:
+    resolution: {integrity: sha512-1oN3P9bzE90zkbjLTc+uICVLwSR+eQaDaYVipS0BtmtmEd3ccQue0y7npCinb35YqKzIv1LZxhoU9nm5fgmQuw==}
+    engines: {node: '>=8.*'}
+    hasBin: true
+
   oxlint@1.30.0:
     resolution: {integrity: sha512-6Mcpj7Gn26QNRUpue9kRZKQg623mH10kLPl597sNCOfXeUZHTglrc2O54eskHMRA+tR7c0u73nW4GPwSFePLkA==}
     engines: {node: ^20.19.0 || >=22.12.0}
@@ -1171,6 +1321,10 @@ packages:
   p-limit@2.3.0:
     resolution: {integrity: sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==}
     engines: {node: '>=6'}
+
+  p-limit@6.2.0:
+    resolution: {integrity: sha512-kuUqqHNUqoIWp/c467RI4X6mmyuojY5jGutNU0wVTmEOOfcuwLqyMVoAi9MKi2Ak+5i9+nhmrK4ufZE8069kHA==}
+    engines: {node: '>=18'}
 
   p-locate@4.1.0:
     resolution: {integrity: sha512-R79ZZ/0wAxKGu3oYMlz8jy/kbhsNrS7SKZ7PxEHBgJ5+F2mtFW2fK2cOtBh1cHYkQsbzFV7I+EoRKe6Yt0oK7A==}
@@ -1265,6 +1419,10 @@ packages:
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
+
+  readdirp@5.0.0:
+    resolution: {integrity: sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==}
+    engines: {node: '>= 20.19.0'}
 
   resolve-from@5.0.0:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
@@ -1511,6 +1669,13 @@ packages:
   yn@3.1.1:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
     engines: {node: '>=6'}
+
+  yocto-queue@1.2.2:
+    resolution: {integrity: sha512-4LCcse/U2MHZ63HAJVE+v71o7yOdIe4cZ70Wpf8D/IyjDKYQLV5GD46B+hSTjJsvV5PztjvHoU580EftxjDZFQ==}
+    engines: {node: '>=12.20'}
+
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
   zod@4.1.13:
     resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
@@ -1865,6 +2030,16 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
+  '@maastrich/cockpit@file:':
+    dependencies:
+      '@oclif/core': 4.8.0
+      chokidar: 5.0.0
+      fast-glob: 3.3.3
+      jiti: 2.6.1
+      p-limit: 6.2.0
+      picocolors: 1.1.1
+      zod: 3.25.76
+
   '@manypkg/find-root@1.1.0':
     dependencies:
       '@babel/runtime': 7.28.4
@@ -1980,25 +2155,49 @@ snapshots:
   '@oxc-resolver/binding-win32-x64-msvc@11.14.0':
     optional: true
 
+  '@oxlint/darwin-arm64@0.16.12':
+    optional: true
+
   '@oxlint/darwin-arm64@1.30.0':
+    optional: true
+
+  '@oxlint/darwin-x64@0.16.12':
     optional: true
 
   '@oxlint/darwin-x64@1.30.0':
     optional: true
 
+  '@oxlint/linux-arm64-gnu@0.16.12':
+    optional: true
+
   '@oxlint/linux-arm64-gnu@1.30.0':
+    optional: true
+
+  '@oxlint/linux-arm64-musl@0.16.12':
     optional: true
 
   '@oxlint/linux-arm64-musl@1.30.0':
     optional: true
 
+  '@oxlint/linux-x64-gnu@0.16.12':
+    optional: true
+
   '@oxlint/linux-x64-gnu@1.30.0':
+    optional: true
+
+  '@oxlint/linux-x64-musl@0.16.12':
     optional: true
 
   '@oxlint/linux-x64-musl@1.30.0':
     optional: true
 
+  '@oxlint/win32-arm64@0.16.12':
+    optional: true
+
   '@oxlint/win32-arm64@1.30.0':
+    optional: true
+
+  '@oxlint/win32-x64@0.16.12':
     optional: true
 
   '@oxlint/win32-x64@1.30.0':
@@ -2095,6 +2294,10 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
+  '@types/node@22.19.7':
+    dependencies:
+      undici-types: 6.21.0
+
   acorn-walk@8.3.4:
     dependencies:
       acorn: 8.15.0
@@ -2159,6 +2362,10 @@ snapshots:
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
+
+  chokidar@5.0.0:
+    dependencies:
+      readdirp: 5.0.0
 
   ci-info@3.9.0: {}
 
@@ -2510,6 +2717,17 @@ snapshots:
       '@oxc-resolver/binding-win32-ia32-msvc': 11.14.0
       '@oxc-resolver/binding-win32-x64-msvc': 11.14.0
 
+  oxlint@0.16.12:
+    optionalDependencies:
+      '@oxlint/darwin-arm64': 0.16.12
+      '@oxlint/darwin-x64': 0.16.12
+      '@oxlint/linux-arm64-gnu': 0.16.12
+      '@oxlint/linux-arm64-musl': 0.16.12
+      '@oxlint/linux-x64-gnu': 0.16.12
+      '@oxlint/linux-x64-musl': 0.16.12
+      '@oxlint/win32-arm64': 0.16.12
+      '@oxlint/win32-x64': 0.16.12
+
   oxlint@1.30.0:
     optionalDependencies:
       '@oxlint/darwin-arm64': 1.30.0
@@ -2528,6 +2746,10 @@ snapshots:
   p-limit@2.3.0:
     dependencies:
       p-try: 2.2.0
+
+  p-limit@6.2.0:
+    dependencies:
+      yocto-queue: 1.2.2
 
   p-locate@4.1.0:
     dependencies:
@@ -2588,6 +2810,8 @@ snapshots:
       strip-bom: 3.0.0
 
   readdirp@4.1.2: {}
+
+  readdirp@5.0.0: {}
 
   resolve-from@5.0.0: {}
 
@@ -2828,5 +3052,9 @@ snapshots:
       strip-ansi: 6.0.1
 
   yn@3.1.1: {}
+
+  yocto-queue@1.2.2: {}
+
+  zod@3.25.76: {}
 
   zod@4.1.13: {}

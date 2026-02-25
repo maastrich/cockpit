@@ -49,10 +49,12 @@ pnpm run prepublishOnly
 **CLI Framework**: oclif-based CLI where commands are auto-discovered from `./dist/commands`. The binary name is `cockpit` and topics are separated by spaces.
 
 **Entry Points**:
+
 - `bin/dev.js` - Development entry (uses ts-node ESM loader)
 - `bin/run.js` - Production entry (uses compiled code)
 
 **Source Structure**:
+
 - `src/index.ts` - Main export (re-exports oclif run)
 - `src/commands/` - CLI command definitions (auto-discovered by oclif)
 - `dist/` - Compiled output (ESM + type definitions)
@@ -68,6 +70,7 @@ pnpm run prepublishOnly
 ## Versioning
 
 Uses Changesets for semantic versioning:
+
 ```bash
 pnpm run changeset   # Create a changeset
 pnpm run version     # Apply version bumps

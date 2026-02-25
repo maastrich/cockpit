@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App - Cockpit Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Todo App</h1>
+      <p class="subtitle">Built with @maastrich/cockpit</p>
+    </header>
+
+    <div id="stats" class="stats"></div>
+
+    <form id="todo-form" class="todo-form">
+      <div class="form-row">
+        <input
+          type="text"
+          name="title"
+          placeholder="What needs to be done?"
+          class="input-title"
+          required
+        >
+        <select name="priority" class="input-priority">
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <input
+          type="text"
+          name="description"
+          placeholder="Description (optional)"
+          class="input-description"
+        >
+        <input
+          type="date"
+          name="dueDate"
+          class="input-date"
+        >
+        <button type="submit" class="btn-add">Add Todo</button>
+      </div>
+    </form>
+
+    <main id="todo-list" class="todo-list"></main>
+
+    <footer class="footer">
+      <p>Example monorepo demonstrating <strong>@maastrich/cockpit</strong> task runner</p>
+    </footer>
+  </div>
+
+  <script type="module" src="../dist/index.js"></script>
+</body>
+</html>

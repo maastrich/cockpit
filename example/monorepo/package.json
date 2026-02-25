@@ -1,0 +1,21 @@
+{
+  "name": "@example/monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Todo App - Example monorepo for @maastrich/cockpit",
+  "scripts": {
+    "build": "../bin/run.js run build:all",
+    "test": "../bin/run.js run test:all",
+    "lint": "../bin/run.js run lint:all",
+    "type-check": "../bin/run.js run type-check:all",
+    "ci": "../bin/run.js run ci",
+    "clean": "../bin/run.js run clean:all"
+  },
+  "devDependencies": {
+    "@maastrich/cockpit": "file:../..",
+    "@types/bun": "^1.0.0",
+    "oxlint": "^0.16.0",
+    "typescript": "^5.7.0"
+  }
+}

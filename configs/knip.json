@@ -1,7 +1,9 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "project": ["src/**/*.ts"],
-  "ignoreDependencies": ["type-testing", "tsx"],
+  "entry": ["src/index.ts", "src/commands/**/*.ts"],
+  "ignoreDependencies": ["type-testing", "tsx", "ts-node"],
+  "ignore": ["src/core/**/*.ts", "src/utils/**/*.ts"],
   "prettier": {
     "config": "./configs/.prettierrc.json"
   }

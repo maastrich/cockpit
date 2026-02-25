@@ -5,7 +5,6 @@
   "type": "module",
   "description": "Manage your repository command in a simple manner.",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "packageManager": "pnpm@10.24.0",
   "engines": {
@@ -15,17 +14,18 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     }
   },
   "files": [
+    "bin",
     "dist",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts",
-    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "build": "tsup src --format esm --dts",
+    "dev": "tsup src --format esm --dts --watch",
     "test": "bun test",
     "type-check": "pnpm run type-check:lib && pnpm run type-check:tests",
     "type-check:lib": "tsc --noEmit -p tsconfig.json",
@@ -62,7 +62,13 @@
   "homepage": "https://github.com/maastrich/cockpit#readme",
   "license": "MIT",
   "dependencies": {
-    "@oclif/core": "^4.8.0"
+    "@oclif/core": "^4.8.0",
+    "chokidar": "^5.0.0",
+    "fast-glob": "^3.3.2",
+    "jiti": "^2.6.1",
+    "p-limit": "^6.2.0",
+    "picocolors": "^1.1.1",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.7",
